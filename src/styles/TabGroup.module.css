@@ -1,0 +1,15 @@
+.tab {
+    font-size: 20px;
+    padding: 10px 60px;
+    cursor: pointer;
+    opacity: 0.6;
+    color: var(--secondary-glow);
+    background: black;
+    border: 0;
+    outline: 0;
+  }
+  
+  .active {
+      border-bottom: 8px solid var(--secondary-glow);
+      opacity: 1;
+  }
