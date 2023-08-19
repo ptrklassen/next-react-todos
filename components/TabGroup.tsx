@@ -41,7 +41,7 @@ export default function TabGroup(props: TodoStateProps): JSX.Element {
           </TabButton>
         ))}
       </div>
-      <TodoList todos={todos} setTodos={setTodos} active={activeTab} />
+      <TodoList todos={todos} setTodos={setTodos} activeTab={activeTab} />
     </>
   );
 }
