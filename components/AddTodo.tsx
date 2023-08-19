@@ -14,7 +14,13 @@ export type Todo = {
   text: string;
   done: boolean;
   dateAdded: Date;
+  dateCompleted?: Date;
 };
+
+export type TodoActionProps = {
+  todo: Todo;
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
+}
 
 export default function AddTodo({ setTodos }: SetTodos): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -32,10 +38,9 @@ export default function AddTodo({ setTodos }: SetTodos): JSX.Element {
       done: false,
       dateAdded,
     };
-    const target = event.target as typeof event.target & {
-      addTodo: { value: string };
-    };
-    console.log(target.addTodo.value, todo);
+    // const target = event.target as typeof event.target & {
+    //   addTodo: { value: string };
+    // };
     setTodos((previousTodos) => {
       return previousTodos.concat(todo);
     });

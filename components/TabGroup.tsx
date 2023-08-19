@@ -1,36 +1,48 @@
-import { JsxElement } from "typescript";
-import { ButtonHTMLAttributes, useState } from "react";
+import { useState } from "react";
 import { SetTodos, Todos } from "./AddTodo";
-import styles from '@/styles/TabGroup.module.css'
+import styles from "@/styles/TabGroup.module.css";
+import TodoList from "./TodoList";
 
 const tabTypes: string[] = ["All", "Open", "Done"];
+
+export type ActiveTab = {
+    activeTab: string
+  }
 
 interface TabButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   active: Boolean;
 }
 
 function TabButton(props: TabButtonProps) {
-    const { active, ...rest } = props;
-    return <button {...rest} />
+  const { active, ...rest } = props;
+  return <button {...rest} />;
 }
 
 export default function TabGroup(
   { todos }: Todos,
   { setTodos }: SetTodos
-) {
-  const [active, setActive] = useState(tabTypes[0]);
+): JSX.Element {
+  const [activeTab, setActiveTab] = useState(tabTypes[0]);
+  console.log(activeTab);
   return (
-    <div style={{ display: "flex" }}>
-      {tabTypes.map((tabType) => (
-        <TabButton
-          key={tabType}
-          active={active === tabType}
-          onClick={() => setActive(tabType)}
-          className={active === tabType ? `${styles.tab} ${styles.active}` : `${styles.tab}`}
-        >
-          {tabType}
-        </TabButton>
-      ))}
-    </div>
+    <>
+      <div style={{ display: "flex" }}>
+        {tabTypes.map((tabType) => (
+          <TabButton
+            key={tabType}
+            active={activeTab === tabType}
+            onClick={() => setActiveTab(tabType)}
+            className={
+              activeTab === tabType
+                ? `${styles.tab} ${styles.active}`
+                : `${styles.tab}`
+            }
+          >
+            {tabType}
+          </TabButton>
+        ))}
+      </div>
+      <TodoList todos={todos} setTodos={setTodos} active={activeTab} />
+    </>
   );
 }
