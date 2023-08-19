@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { SetTodos, Todos } from "./AddTodo";
 import styles from "@/styles/TabGroup.module.css";
 import TodoList from "./TodoList";
 import { TodoStateProps } from "./AddTodo";
