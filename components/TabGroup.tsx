@@ -2,12 +2,13 @@ import { useState } from "react";
 import { SetTodos, Todos } from "./AddTodo";
 import styles from "@/styles/TabGroup.module.css";
 import TodoList from "./TodoList";
+import { TodoStateProps } from "./AddTodo";
 
 const tabTypes: string[] = ["All", "Open", "Done"];
 
 export type ActiveTab = {
-    activeTab: string
-  }
+  activeTab: string;
+};
 
 interface TabButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   active: Boolean;
@@ -18,10 +19,8 @@ function TabButton(props: TabButtonProps) {
   return <button {...rest} />;
 }
 
-export default function TabGroup(
-  { todos }: Todos,
-  { setTodos }: SetTodos
-): JSX.Element {
+export default function TabGroup(props: TodoStateProps): JSX.Element {
+  const { todos, setTodos } = props;
   const [activeTab, setActiveTab] = useState(tabTypes[0]);
   console.log(activeTab);
   return (

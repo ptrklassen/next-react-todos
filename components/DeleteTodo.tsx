@@ -1,8 +1,8 @@
 import { Todo, TodoActionProps } from "./AddTodo";
 
-export default function DeleteTodo( props: TodoActionProps): JSX.Element {
-    const {todo, setTodos} = props;
-    function handleDeleteTodo() {
+export default function DeleteTodo(props: TodoActionProps): JSX.Element {
+  const { todo, setTodos } = props;
+  function handleDeleteTodo() {
     const confirmed = window.confirm("Do you want to delete this?");
     if (confirmed) {
       setTodos((prevTodos) => {

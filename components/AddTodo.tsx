@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction } from "react";
 import { useRef } from "react";
 
 export type Todos = {
-  todos: Todo[]
-}
+  todos: Todo[];
+};
 
 export type SetTodos = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
@@ -17,10 +17,15 @@ export type Todo = {
   dateCompleted?: Date;
 };
 
+export type TodoStateProps = {
+  todos: Todos;
+  setTodos: SetTodos;
+};
+
 export type TodoActionProps = {
   todo: Todo;
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
-}
+  setTodos: SetTodos;
+};
 
 export default function AddTodo({ setTodos }: SetTodos): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);

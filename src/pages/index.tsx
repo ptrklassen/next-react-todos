@@ -1,24 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { useState } from 'react'
-import styles from '@/styles/Home.module.css'
-import AddTodo from '../../components/AddTodo'
-import { Todo } from '../../components/AddTodo'
-import TabGroup from '../../components/TabGroup'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useState } from "react";
+import styles from "@/styles/Home.module.css";
+import AddTodo from "../../components/AddTodo";
+import { Todo } from "../../components/AddTodo";
+import TabGroup from "../../components/TabGroup";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const Logo = () => (
-    <Image 
-    src="/images/todo-logo.png" 
-    alt="Todo Logo" 
-    width="160" 
-    height="79"
+    <Image
+      src="/images/todo-logo.png"
+      alt="Todo Logo"
+      width="160"
+      height="79"
     />
-  )
+  );
 
   return (
     <>
@@ -31,8 +31,8 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <Logo />
         <TabGroup todos={todos} setTodos={setTodos} />
-        <AddTodo setTodos={setTodos}/>
+        <AddTodo setTodos={setTodos} />
       </main>
     </>
-  )
+  );
 }

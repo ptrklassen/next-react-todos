@@ -1,20 +1,17 @@
 import DeleteTodo from "./DeleteTodo";
 import PrioritizeTodo from "./PrioritizeTodo";
 import { SetTodos, Todos, Todo } from "./AddTodo";
-import { ActiveTab } from "./TabGroup"
-
-// Basic list of all the todos
+import { ActiveTab } from "./TabGroup";
 
 type TodoListProps = {
-    todos: Todos;
-    setTodos: SetTodos;
-    activeTab: ActiveTab
-}
-
+  todos: Todos;
+  setTodos: SetTodos;
+  activeTab: ActiveTab;
+};
 
 export default function TodoList(props: TodoListProps): JSX.Element {
-  const {todos, setTodos, activeTab} = props;
-    let filteredTodos = [];
+  const { todos, setTodos, activeTab } = props;
+  let filteredTodos = [];
   switch (activeTab) {
     case "Open":
       filteredTodos = todos.filter((todo: Todo) => !todo.done);
