@@ -5,9 +5,7 @@ import { TodoStateProps } from "./AddTodo";
 
 const tabTypes: string[] = ["All", "Open", "Done"];
 
-export type ActiveTab = {
-  activeTab: string;
-};
+export type ActiveTab = string;
 
 interface TabButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   active: Boolean;

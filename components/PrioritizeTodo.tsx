@@ -2,7 +2,8 @@ import { Todo, TodoActionProps } from "./AddTodo";
 
 export default function PrioritizeTodo(props: TodoActionProps): JSX.Element {
   const { todo, setTodos } = props;
-  function handleChangePriority(event) {
+  //TODO discover and update event from any to appropriate type
+  function handleChangePriority(event: any) {
     event.preventDefault();
     const priorityValue = event.target.value;
     setTodos((prevTodos) => {
@@ -17,12 +18,12 @@ export default function PrioritizeTodo(props: TodoActionProps): JSX.Element {
     });
   }
   const options = [
-    { value: "", text: "Priority" },
-    { value: 1, text: "Frog" },
-    { value: 2, text: "Today" },
+    { value: 0, text: "Priority" },
+    { value: 5, text: "Frog" },
+    { value: 4, text: "Today" },
     { value: 3, text: "This week" },
-    { value: 4, text: "This month" },
-    { value: 5, text: "Future" },
+    { value: 2, text: "This month" },
+    { value: 1, text: "Future" },
   ];
   return (
     <select

@@ -1,21 +1,22 @@
 import { Dispatch, SetStateAction } from "react";
 import { useRef } from "react";
 
-export type Todos = {
-  todos: Todo[];
-};
+export type Todos = Todo[];
 
-export type SetTodos = {
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
-};
+export type SetTodos = Dispatch<SetStateAction<Todo[]>>;
 
 export type Todo = {
   id: number;
   text: string;
   done: boolean;
+  priority: number;
   dateAdded: Date;
   dateCompleted?: Date;
 };
+
+type SetTodosProps = {
+  setTodos: SetTodos
+}
 
 export type TodoStateProps = {
   todos: Todos;
@@ -27,7 +28,8 @@ export type TodoActionProps = {
   setTodos: SetTodos;
 };
 
-export default function AddTodo({ setTodos }: SetTodos): JSX.Element {
+export default function AddTodo(props: SetTodosProps): JSX.Element {
+  const { setTodos } = props;
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleAddToDo(event: React.SyntheticEvent<HTMLFormElement>): void {
@@ -41,11 +43,9 @@ export default function AddTodo({ setTodos }: SetTodos): JSX.Element {
       id: Math.random(),
       text,
       done: false,
+      priority: 0,
       dateAdded,
     };
-    // const target = event.target as typeof event.target & {
-    //   addTodo: { value: string };
-    // };
     setTodos((previousTodos) => {
       return previousTodos.concat(todo);
     });
